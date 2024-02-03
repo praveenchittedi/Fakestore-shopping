@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap.icons/font/bootstrapicons.css">
+    <script>
+        function onload(){
+            fetch("..data/products.json")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(data){
+                for(var item of data){
+                var div=document.createElement("div");
+                div.style.width="200px";
+                div.className="card m-2 p-2";
+                div.innerHTML=`
+                     <img src=${item.photo} height="150" class="card-img-top">
+                     <div class="card-header">
+                       <h2>${item.name}</h2>
+                       <p>${item.profession}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button calss="btn btn-danger w-100">Add to cart</button>
+                         </div>   
+                `;
+                document.getElementById("ardi").appendChild(div);
+                }
+            })
+        }
+    </script>
+</head>
+<body onload="bodyload()" class="container-fluid">
+    <h2>catalog</h2>
+ <div id="ardi" class="d-flex justify-content-between">
+
+ </div>
+
+
+    
+ <script src="../node_modules/jquery/dist/jquery.js"></script>
+ <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>   
+</body>
+</html>
